@@ -1,10 +1,9 @@
-
-package demo;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package multithreadingdemo7;
 
 /**
  *
@@ -14,23 +13,28 @@ public class Test
 {
     public static void main(String[] args)
     {
-        JFrame jf=new JFrame();
-        jf.setSize(600, 400);
-        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        jf.setLayout(null);
+        Thread t1=new Thread()
+        {
+            public void run()
+            {
+                for(int i=1; i<=10; i++)
+                {
+                    System.out.println("hi : "+i);
+                }
+            }
+        };
+        t1.start();
         
-        JLabel jl=new JLabel("Enter Name : ");
-        jl.setBounds(100, 50, 100, 30);
-        jf.add(jl);
-        
-        JTextField jt=new JTextField();
-        jt.setBounds(200, 50, 250, 40);
-        jf.add(jt);
-        
-        JButton jb1=new JButton("Click Me");
-        jb1.setBounds(200, 150, 120, 40);
-        jf.add(jb1);
-        
-        jf.setVisible(true);
+        Thread t2=new Thread()
+        {
+            public void run()
+            {
+                for(int i=1; i<=10; i++)
+                {
+                    System.out.println("hello : "+i);
+                }
+            }
+        };
+        t2.start();
     }
 }
